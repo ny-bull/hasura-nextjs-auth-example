@@ -6,11 +6,16 @@ import { AppProps } from 'next/app'
 import { useUserChanged } from '../hooks/useUserChanged'
 import { Provider } from 'react-redux'
 import { Hydrate } from 'react-query/hydration'
+import { store } from '../app/store'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useUserChanged()
+  const {} = useUserChanged()
 
-  return <Component {...pageProps} />
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
 
 export default MyApp
